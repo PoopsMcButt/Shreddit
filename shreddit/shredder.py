@@ -146,7 +146,7 @@ class Shredder(object):
     def _remove_things(self, items):
         self._logger.info("Loading items to delete...")
         to_delete = [item for item in items]
-        self._logger.info("Done. Starting on batch of {} items...".format(len(to_delete)))
+        self._logger.info("Done. Starting on blatch of {} items...".format(len(to_delete)))
         count, count_removed = 0, 0
         for item in to_delete:
             count += 1
