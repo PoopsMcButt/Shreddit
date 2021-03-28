@@ -67,7 +67,7 @@ class Shredder(object):
     def shred(self):
         deleted = self._remove_things(self._build_iterator())
         self._logger.info("Finished deleting {} items. ".format(deleted))
-        if deleted >= 1:
+        if deleted >= 0:
             # This user has more than 1000 items to handle, which angers the gods of the Reddit API. So chill for a
             # while and do it again.
             self._logger.info("Waiting {} seconds and continuing...".format(self._batch_cooldown))
@@ -146,7 +146,7 @@ class Shredder(object):
     def _remove_things(self, items):
         self._logger.info("Loading items to delete...")
         to_delete = [item for item in items]
-        self._logger.info("Done. Starting on blatch of {} items...".format(len(to_delete)))
+        self._logger.info("Done. Starting on batch of {} items...".format(len(to_delete)))
         count, count_removed = 0, 0
         for item in to_delete:
             count += 1
