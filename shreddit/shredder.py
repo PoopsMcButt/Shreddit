@@ -67,7 +67,7 @@ class Shredder(object):
     def shred(self):
         deleted = self._remove_things(self._build_iterator())
         self._logger.info("Finished deleting {} items. ".format(deleted))
-        if deleted >= 1000:
+        if deleted >= 1:
             # This user has more than 1000 items to handle, which angers the gods of the Reddit API. So chill for a
             # while and do it again.
             self._logger.info("Waiting {} seconds and continuing...".format(self._batch_cooldown))
@@ -77,7 +77,7 @@ class Shredder(object):
 
     def _connect(self):
         try:
-            self._r = praw.Reddit(self._user, check_for_updates=False, user_agent="python:shreddit:v6.0.4")
+            self._r = praw.Reddit(self._user, check_for_updates=False, user_agent="python:test:v6.0.5")
             self._logger.info("Logged in as {user}.".format(user=self._r.user.me()))
         except ResponseException:
             raise ShredditError("Bad OAuth credentials")
